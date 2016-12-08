@@ -62,7 +62,7 @@ int main(int argc, char *argv[]) {
     semctl( semid, 0, SETVAL, su );
     
     // make file
-    int fd = open("story.txt", O_CREAT | O_TRUNC | 0644);
+    int fd = open("story.txt", O_CREAT | O_TRUNC, 0644);
     close(fd);
   }
 
