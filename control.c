@@ -4,6 +4,8 @@
 #include <sys/ipc.h>
 #include <sys/sem.h>
 #include <string.h>
+#include <fcntl.h>
+#include <sys/shm.h>
 
  // declaration required on linux
 union semun {  
@@ -16,7 +18,7 @@ union semun {
 int main(int argc, char *argv[]) {
   
   int shmid;
-  int line_size;
+  int *line_size;
   int semid;
   int key = ftok( "control.c", 1337 );
   int sc;
@@ -25,19 +27,22 @@ int main(int argc, char *argv[]) {
   // creates semaphore and set value to arg2
   if ( strcmp( argv[1], "-c" ) == 0 ) {
     // make shared memory; set to 0
-    shmid = shmget( key, 8, IPC_CREAT | IPC_EXCL );
+    shmid = shmget( key, sizeof(int), IPC_CREAT | IPC_EXCL | 0644 );
     line_size = shmat( shmid, 0, 0 );
     *line_size = 0;
     
     // make semaphore
     semid = semget( key, 1, IPC_CREAT | IPC_EXCL | 0644 );
     if ( semid >= 0 ) {
-      su.val = ato]);
+      su.val = 1;
       sc = semctl( semid, 0, SETVAL, su );
-
     }
     else
       printf("semaphore already exists\n");
+
+    // make file
+    int fd = open("story.txt", O_CREAT | O_TRUNC | 0644);
+    close(fd);
   }
 
   // prints out value of the semaphore
