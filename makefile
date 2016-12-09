@@ -1,2 +1,3 @@
-compile: control.c
-	gcc -g control.c
+compile:
+	gcc -g control.c -o control.out
+	gcc -g writer.c -o writer.out
