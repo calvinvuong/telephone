@@ -9,13 +9,14 @@
 #include <unistd.h>
 #include <sys/stat.h>
 
+/*
 union semun {  
   int val;
   struct semid_ds *buf;
   unsigned short *array; 
   struct seminfo *__buf;
 };
-
+*/
 
 int main() {
 

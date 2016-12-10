@@ -11,14 +11,14 @@
 
 
  // declaration required on linux
-
+/*
 union semun {  
   int val;
   struct semid_ds *buf;
   unsigned short *array; 
   struct seminfo *__buf;
 };
-
+*/
 
 
 void print_file() {
@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
     // make shared memory; set to 0
     shmid = shmget( key, sizeof(int), IPC_CREAT | 0644 );
     line_size = (int *) shmat( shmid, 0, 0 );
-    *line_size = 10;
+    *line_size = 0;
     
     // make semaphore
     semid = semget( key, 1, IPC_CREAT | 0644 );
