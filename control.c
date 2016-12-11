@@ -1,25 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/ipc.h>
-#include <sys/sem.h>
-#include <string.h>
-#include <fcntl.h>
-#include <sys/shm.h>
-#include <unistd.h>
-#include <sys/stat.h>
-
-
- // declaration required on linux
-/*
-union semun {  
-  int val;
-  struct semid_ds *buf;
-  unsigned short *array; 
-  struct seminfo *__buf;
-};
-*/
-
+#include "main.h"
 
 void print_file() {
   int fd = open("story.txt", O_RDONLY);

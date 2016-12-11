@@ -1,3 +1,11 @@
+# Our files
+story.txt
+tester.c
+
+# Emacs
+*~
+*\#
+
 # Object files
 *.o
 *.ko
