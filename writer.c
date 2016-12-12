@@ -10,7 +10,7 @@ int main() {
   int line_size;
 
   semid = semget( key, 1, 0 );
-  printf("May take a while if there is another process accessing the file...\n");
+  printf("May take a while if there is another process accessing the file...\n\n");
   
   // update semaphore; prevent other processes from accessing file HERE DOWN
   struct sembuf sb;
