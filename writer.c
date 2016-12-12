@@ -21,6 +21,11 @@ int main() {
 
   // get last line size
   shmid = shmget( key, sizeof(int), 0644 );
+  if (shmid < 0) { // fail if shm doesn't exist
+    printf("error: %d - %s\n", errno, strerror(errno));
+    exit(0);
+  }
+
   memptr = (int *) shmat( shmid, 0, 0 );
   line_size = *memptr;
 

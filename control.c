@@ -14,12 +14,11 @@ void print_file() {
   contents[size] = 0; // null terminate
 
   // print contents
-  printf("%s\n", contents);
+  printf("%s", contents); //already a \n at the end of story
 }
 
 
 int main(int argc, char *argv[]) {
-  
   int shmid;
   int *line_size;
   int semid;
@@ -61,26 +60,12 @@ int main(int argc, char *argv[]) {
     semctl( semid, 0, IPC_RMID );
 
     print_file();
+  } 
+
+  else {
+    printf("Error: not a valid flag! Use -c for creating, -v for viewing, or -r for removing!");
+    exit(0);
   }
 
   return 0;
 }
-
-  /*
-  // prints out contents of story
-  else if ( strcmp( argv[1], "-v" ) == 0 ) {
-    semid = semget( key, 1, 0 );
-    sc = semctl( semid, 0, GETVAL );
-    printf("semaphore value: %d\n", sc);
-  }
-  
-  // removes the semaphore
-  else if ( strcmp( argv[1], "-r" ) == 0 ) {
-    semid = semget( key, 1, 0 );
-    sc = semctl( semid, 0, IPC_RMID );
-    printf("semaphore removed: %d\n", sc);
-  }
-
-  return 0;
-}
-  */
