@@ -1,3 +1,3 @@
 compile:
-	gcc -g control.c -o control.out
-	gcc -g writer.c -o writer.out
+	gcc control.c -o control.out
+	gcc writer.c -o writer.out
